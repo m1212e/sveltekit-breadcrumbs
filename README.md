@@ -10,13 +10,13 @@ npm i -D sveltekit-breadcrumbs
 Then you can use the component like this:
 ```svelte
 <script>
-    import { Breadcrumbs } from 'sveltekit-breadcrumbs';
-	import type { PathSegment } from 'sveltekit-breadcrumbs';
+  import { Breadcrumbs } from 'sveltekit-breadcrumbs';
+  import type { PathSegment } from 'sveltekit-breadcrumbs';
 
-	// since your URL can contain variables and SvelteKit provides us with a type which
-	// represents these keys, we get it here
-	// and use it below for improved type safety
-    type Parameters = keyof LayoutServerLoadEvent['params'];
+  // since your URL can contain variables and SvelteKit provides us with a type which
+  // represents these keys, we get it here
+  // and use it below for improved type safety
+  type Parameters = keyof LayoutServerLoadEvent['params'];
 </script>
 
 <Breadcrumbs
@@ -25,14 +25,14 @@ Then you can use the component like this:
 	delimeterSnippet="disabled"
 	homePath="/"
 >
-	{#snippet pathSnippet(pathSegment: PathSegment<Parameters, boolean>)}
-		<a class="breadcrumb-snippet" href={pathSegment.href}>
-			<i class="icon-for-breadcrumb"></i>
-			<p class="ml-2">
-				{pathSegment.key}
-			</p>
-		</a>
-	{/snippet}
+  {#snippet pathSnippet(pathSegment: PathSegment<Parameters, boolean>)}
+    <a class="breadcrumb-snippet" href={pathSegment.href}>
+      <i class="icon-for-breadcrumb"></i>
+        <p class="ml-2">
+          {pathSegment.key}
+        </p>
+    </a>
+  {/snippet}
 </Breadcrumbs>
 ```
 > Note that the `import.meta.glob('./**/+page.svelte')` call is responsible for providing the component with displayable path info. Therefore you can expect all pages in the current path and its subpaths but no parent directory will be respected.
