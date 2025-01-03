@@ -20,10 +20,10 @@ Then you can use the component like this:
 </script>
 
 <Breadcrumbs
-	importObject={import.meta.glob('./**/+page.svelte')}
-	availableLanguageTags={["en", "de"]}
-	delimeterSnippet="disabled"
-	homePath="/"
+  importObject={import.meta.glob('./**/+page.svelte')}
+  availableLanguageTags={["en", "de"]}
+  delimeterSnippet="disabled"
+  homePath="/"
 >
   {#snippet pathSnippet(pathSegment: PathSegment<Parameters, boolean>)}
     <a class="breadcrumb-snippet" href={pathSegment.href}>
