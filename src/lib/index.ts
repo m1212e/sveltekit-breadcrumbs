@@ -1,2 +1,2 @@
-// Reexport your entry components here
 export * from './Breadcrumbs.svelte';
+export { default as Breadcrumbs } from './Breadcrumbs.svelte';
