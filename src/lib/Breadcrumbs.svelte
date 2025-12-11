@@ -137,7 +137,7 @@
 				}
 
 				// if we have an exact match, return that
-				if(currentLevelStaticSegment.key === pathSegment) {
+				if (currentLevelStaticSegment.key === pathSegment) {
 					return true;
 				}
 

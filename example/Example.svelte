@@ -146,7 +146,7 @@ import path via the parameter! -->
 	delimeterSnippet="disabled"
 	homePath="/"
 >
-	{#snippet pathSnippet(pathSegment: PathSegment<Parameters, boolean>)}
+	{#snippet pathSnippet(pathSegment: PathSegment)}
 		<a class="btn btn-ghost btn-sm" href={pathSegment.href}>
 			<i class="fa-duotone fa-{getBreadcrumb(pathSegment).icon}"></i>
 			<p class="ml-2">
