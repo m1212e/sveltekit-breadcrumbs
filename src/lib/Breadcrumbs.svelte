@@ -39,9 +39,9 @@
 		 */
 		pathSnippet?: Snippet<[PathSegment<Parameter, boolean>]>;
 		/**
-		 * How to render a delimeter between the path segments
+		 * How to render a delimiter between the path segments
 		 */
-		delimeterSnippet?: Snippet | 'disabled';
+		delimiterSnippet?: Snippet | 'disabled';
 	}
 
 	let {
@@ -50,7 +50,7 @@
 		importObject,
 		homePath,
 		pathSnippet = defaultPathSnippet,
-		delimeterSnippet = defaultDelimeterSnippet
+		delimiterSnippet = defaultDelimiterSnippet
 	}: Props = $props();
 
 	// default params are not reactive, thatswhy the extra statement
@@ -109,6 +109,9 @@
 		});
 	});
 
+	console.log(importObject);
+	console.log(staticPaths);
+
 	/**
 	 * Finds the best matching static path array for a given path string segment array
 	 * @param pathSegments
@@ -133,13 +136,19 @@
 					return false;
 				}
 
+				// if we have an exact match, return that
+				if(currentLevelStaticSegment.key === pathSegment) {
+					return true;
+				}
+
 				// in case we have a parameter at this level we cannot say for sure if we have a match
+				// but wanna keep it as a possible match
 				if (currentLevelStaticSegment.isParameter) {
 					return true;
 				}
 
-				// lastly, if the key matches on this level, we have a match
-				return currentLevelStaticSegment.key === pathSegment;
+				// otherwise we don't have a match
+				return false;
 			});
 			index++;
 		}
@@ -177,7 +186,7 @@
 	});
 </script>
 
-{#snippet defaultPathSnippet(pathSegment: PathSegment<Parameter, boolean>)}
+{#snippet defaultPathSnippet(pathSegment: PathSegment)}
 	<a href={pathSegment.href}>
 		{#if pathSegment.isParameter}
 			{pathSegment.key}:
@@ -188,7 +197,7 @@
 	</a>
 {/snippet}
 
-{#snippet defaultDelimeterSnippet()}
+{#snippet defaultDelimiterSnippet()}
 	&gt;
 {/snippet}
 
@@ -204,9 +213,9 @@
 		{#each currentPath as pathSegment, i}
 			<li class="breadcrumb">
 				{@render pathSnippet(pathSegment)}
-				{#if delimeterSnippet !== 'disabled' && i !== currentPath.length - 1}
-					<span class="breadcrumb-delimeter">
-						{@render delimeterSnippet()}
+				{#if delimiterSnippet !== 'disabled' && i !== currentPath.length - 1}
+					<span class="breadcrumb-delimiter">
+						{@render delimiterSnippet()}
 					</span>
 				{/if}
 			</li>
