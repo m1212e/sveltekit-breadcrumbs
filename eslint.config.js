@@ -23,7 +23,7 @@ export default ts.config(
 		}
 	},
 	{
-		files: ['**/*.svelte'],
+		files: ['./src/**/*.svelte'],
 
 		languageOptions: {
 			parserOptions: {

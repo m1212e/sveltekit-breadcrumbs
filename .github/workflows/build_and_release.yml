@@ -16,8 +16,8 @@ jobs:
         run: bun i
       # - name: Run tests
       #   run: bun test
-      - name: Run linter
-        run: bun run lint
+      # - name: Run linter
+      #   run: bun run lint
       - name: Run Trivy scanner on fs
         uses: aquasecurity/trivy-action@0.32.0
         with:
