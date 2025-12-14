@@ -27,7 +27,7 @@ Then you can use the component like this:
 <Breadcrumbs
   importObject={import.meta.glob('./**/+page.svelte')}
   availableLanguageTags={["en", "de"]}
-  delimeterSnippet="disabled"
+  delimiterSnippet="disabled"
   homePath="/"
 >
   {#snippet pathSnippet(pathSegment: PathSegment<Parameters, boolean>)}
@@ -55,9 +55,9 @@ Depending on where you place the component in your directory tree (best works in
 
 This is optional and can be used to strip language prefixes from the paths. Set this to an array of language tags which might appear in the urls of you application. E.g. `["en", "de"]`.
 
-#### delimeterSnippet
+#### delimiterSnippet
 
-You can optionally set a delimeter snippet which will get placed between all path segments of the generated breadcrumbs.
+You can optionally set a delimiter snippet which will get placed between all path segments of the generated breadcrumbs.
 
 #### homePath
 
